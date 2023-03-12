@@ -4,8 +4,9 @@
 #include "structure.h"
 
 //Fait la différence entre vecteur - vecteur2 = Result
-void diffVec(double vecteur[], double vecteur2[], double Result[], int numberLine)
+void diffVec(double* vecteur, double* vecteur2, double* Result, int numberLine)
 {
+    
     for (int i = 0; i < numberLine; i++)
     {
         Result[i] = vecteur[i] - vecteur2[i];
@@ -13,19 +14,20 @@ void diffVec(double vecteur[], double vecteur2[], double Result[], int numberLin
 }
 
 //calcule la norme du vecteur
-double norme(double vecteur[], int numberLine)
+double norme(double* vecteur, int numberLine)
 {
     double norme = 0;
     for (int i = 0; i < numberLine; i++)
     {   
+       // printf("vecteur i :%lf\n", vecteur[i]);
         norme = norme + vecteur[i] * vecteur[i];
-        //printf("norme %d: %lf\n\n", i, norme);
+       // printf("norme %d: %lf\n\n", i, norme);
     }
     return sqrt(norme);
 }
 
 //multiplication d'une matrice "liste" avec vecteur, résultat dans Result
-void Multiply(struct noeud *liste[], double vecteur[], double Result[], int numberLine)
+void Multiply(struct noeud *liste[], double* vecteur, double* Result, int numberLine)
 {
     for (int i = 0; i < numberLine; i++)
     {
@@ -64,7 +66,7 @@ void addNoeud(struct noeud **n, int number, double prob)
     }
 }
 //crée les listes chainé représentant une matrice
-void createLists(FILE *f, struct noeud *liste[], int fVector[], int numberLine)
+void createLists(FILE *f, struct noeud *liste[], int* fVector, int numberLine)
 {
     int read;
     for (int i = 1; i < numberLine + 1; i++)
@@ -89,10 +91,10 @@ void createLists(FILE *f, struct noeud *liste[], int fVector[], int numberLine)
 }
 
 
-void pageRank(int fVector[] , double vecXP[], double vecteur[], float alpha, int numberLine, double result[])
+void pageRank(int* fVector , double* vecXP, double* vecteur, double alpha, int numberLine, double* result)
 {   
-    double e[numberLine];
-    double e2[numberLine];
+    double* e = malloc(sizeof(double) * numberLine);
+    double* e2= malloc(sizeof(double) * numberLine);
     double xf = 0;
     for (int i = 0; i < numberLine; i++) {
         vecXP[i] = vecXP[i] * alpha; //vecXP = alpha*XP
@@ -136,10 +138,11 @@ void vecGenerator(double vecteur[], int numberLine){
  * @param vecteur 
  * @param numberLine 
  */
-void vectGenerator(double vecteur[], int numberLine) {
+void vectGenerator(double* vecteur, int numberLine) {
     
     for (int i = 0; i < numberLine; i++) {
         vecteur[i] = 1/(double)numberLine;
-        //printf("%lf\n", vecteur[i]);
+       // printf("%lf\n", vecteur[i]);
     }
+    
 }

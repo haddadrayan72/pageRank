@@ -5,6 +5,7 @@
 //affichage d'une matrice (version liste chainée)
 void affichage(struct noeud *liste[], int numberLine)
 {
+    
     for (int i = 1; i < numberLine + 1; i++)
     {
         struct noeud *current = liste[i];
@@ -22,7 +23,7 @@ void affichage(struct noeud *liste[], int numberLine)
 
 //affichage du résultat d'une multiplication
 //affichage du vecteur
-void affichageMultiply(double vecteur[], int numberLine)
+void affichageMultiply(double* vecteur, int numberLine)
 {
     printf("\n\n Vecteur Résultant: \n");
     printf("{");
@@ -34,7 +35,7 @@ void affichageMultiply(double vecteur[], int numberLine)
 }
 
 //affichage du vecteur
-void affichageVecteurInt(int vecteur[], int numberLine)
+void affichageVecteurInt(int* vecteur, int numberLine)
 {
     printf("\n\n Vecteur Résultant: \n");
     printf("{");
