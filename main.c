@@ -23,7 +23,7 @@ void freeMemory(struct noeud *liste[], int numberLine)
 int main()
 {   int score = 0;
     double nor;
-    FILE *f = fopen("web1.txt", "r");
+    FILE *f = fopen("wb-cs-stanford.txt", "r");
     // Variables locales
     int numberArc;  // nombres d'arcs
     int numberLine; // nombres de lignes
@@ -34,7 +34,7 @@ int main()
     printf("numberLine = %d\n", numberLine);
     printf("Début des malloc\n"); 
 
-    int *fVector = malloc(numberLine * sizeof(int));
+    int *fVector = malloc(numberLine * sizeof(double));
     double *vecteur = malloc(numberLine * sizeof(double));
     double *result = malloc(numberLine * sizeof(double));
     double *result2 = malloc(numberLine * sizeof(double));
@@ -43,6 +43,7 @@ int main()
 
 
     vectGenerator(vecteur, numberLine);
+   
     //affichage du vecteur
     //affichageMultiply(vecteur, numberLine);
     
@@ -78,32 +79,34 @@ int main()
     {
         result[i] = vecteur[i];
     }
+
+    affichageMultiply(result, numberLine);
     
     do
     {   
         
 
         Multiply(liste, result, result2, numberLine); //result2 = xP
-        affichageMultiply(result2, numberLine);
+
+       
 
         pageRank(fVector, result2, result, 0.85, numberLine, result2);//result2 = xG
-        affichageMultiply(result2, numberLine);
-
         
-
+        
+        
         diffVec(result2, result, result3, numberLine);
         for (int i = 0; i < numberLine; i++)
         {
             result[i] = result2[i];
         }
         nor = norme(result3, numberLine);
-        printf("%lf##\n", nor);
+        printf("%lf##\n\n\n", nor);
         score ++;
 
        
 
 
-    } while (nor > 0.000001);
+    } while (nor > 0.000000001 && score < 100 );
 
     printf("\nscore: %d\n\n", score);
     

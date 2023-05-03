@@ -91,28 +91,33 @@ void createLists(FILE *f, struct noeud *liste[], int* fVector, int numberLine)
 }
 
 
-void pageRank(int* fVector , double* vecXP, double* vecteur, double alpha, int numberLine, double* result)
+void pageRank(int fVector[] , double vecXP[], double vecteur[], float alpha, int numberLine, double result[])
 {   
     double* e = malloc(sizeof(double) * numberLine);
     double* e2= malloc(sizeof(double) * numberLine);
-    double xf = 0;
+    double fe = 0;
     for (int i = 0; i < numberLine; i++) {
         vecXP[i] = vecXP[i] * alpha; //vecXP = alpha*XP
     }
 
+    //ft * e
     for(int i = 0; i < numberLine; i++) {
-        xf += vecteur[i] * fVector[i]; //
-
+        fe += fVector[i]; //
+        
     }
    // printf("xf =%lf\n", xf);
-    xf = xf * alpha;
-    xf= xf/numberLine;
+   //(xf*alpha) / N
+    fe = fe * alpha;
+    fe= fe/(double) numberLine;
+
 
      for(int i = 0; i < numberLine; i++) {
-        e[i] = xf;
-        e2[i] = (1-alpha)/numberLine;
+        e[i] = fe * vecteur[i];
+        e2[i] = (1-alpha)/(double) numberLine;
         result[i] = vecXP[i] + e[i] + e2[i];
     }
+
+
 
 }
 /*
