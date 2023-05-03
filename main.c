@@ -23,7 +23,7 @@ void freeMemory(struct noeud *liste[], int numberLine)
 int main()
 {   int score = 0;
     double nor;
-    FILE *f = fopen("wb-cs-stanford.txt", "r");
+    FILE *f = fopen("web1.txt", "r");
     // Variables locales
     int numberArc;  // nombres d'arcs
     int numberLine; // nombres de lignes
@@ -61,6 +61,9 @@ int main()
     
     // affichage
     printf("\naffichage de la structure de matrice\n");
+    affichage(liste, numberLine);
+    suppSommet(liste, &numberLine);
+     printf("\naffichage de la structure de matrice après suppression\n");
     affichage(liste, numberLine);
     printf("\n");
     //affichageVecteurInt(fVector);
@@ -106,7 +109,7 @@ int main()
        
 
 
-    } while (nor > 0.000000001 && score < 100 );
+    } while (nor > 0.000000001 );
 
     printf("\nscore: %d\n\n", score);
     

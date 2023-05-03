@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include <math.h>
 #include "structure.h"
+#include <time.h>
 
 //Fait la différence entre vecteur - vecteur2 = Result
 void diffVec(double* vecteur, double* vecteur2, double* Result, int numberLine)
@@ -150,4 +151,59 @@ void vectGenerator(double* vecteur, int numberLine) {
        // printf("%lf\n", vecteur[i]);
     }
     
+}
+
+
+void suppSommet(struct noeud *liste[], int* numberLine) {
+
+
+    
+     srand(time(NULL));
+     int random = rand() % *numberLine;
+     printf("Le random est %d\n", random);
+     struct noeud * deleted = liste[random];
+     liste[random] = liste[*numberLine - 1];
+     
+     struct noeud * current ;
+     struct noeud * previous = NULL; 
+     for (int i = 0; i < *numberLine - 1; i++) {
+        int debut = 0;
+        current =  liste[i];
+        
+
+        while (current != NULL) {
+            if(current->number == random + 1) {
+                if(debut == 0) {
+                    liste[i] = current->next;
+                    current = liste[i];
+
+                }
+                else {
+                    previous->next = current->next;
+                    current = previous;
+                    debut = 1;
+                }
+
+
+            }
+            if(current->number == *numberLine) {
+                current->number = random + 1;
+
+            }
+            previous = current;
+            current = current->next;
+
+        }
+
+
+
+     }
+     
+    *numberLine = *numberLine - 1;
+    //free(deleted);
+
+
+
+
+
 }
