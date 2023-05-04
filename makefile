@@ -9,11 +9,11 @@ compile: liste.o affichage.o main.o
 	gcc -o run main.o liste.o affichage.o -lm
 
 main.o: main.c liste.c affichage.c
-	gcc -o main.o -c -g main.c  -Wall
+	gcc  -o main.o -c -g main.c -Wall
 liste.o : liste.c structure.h
-	gcc -c -g liste.c -o liste.o -lm   -Wall 
+	gcc -c  liste.c -o liste.o -lm -Wall 
 affichage.o: affichage.c structure.h
-	gcc -o affichage.o -c -g affichage.c  -Wall
+	gcc -o affichage.o -c -g affichage.c -Wall
 
 
 	

@@ -9,15 +9,16 @@ void affichage(struct noeud *liste[], int numberLine)
     for (int i = 1; i < numberLine + 1; i++)
     {
         struct noeud *current = liste[i];
-        printf("Node %d :\n", i);
+        printf("Node %d : ", i);
 
         while (current != NULL)
         {
-            printf("%d\n", current->number);
-            printf("%lf\n", current->prob);
-            printf("\n\n");
+            printf(" <-%d ", current->number);
+            printf("[%lf] ", current->prob);
+            printf("\b");
             current = current->next;
         }
+        printf("\n");
     }
 }
 
