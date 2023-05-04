@@ -5,3 +5,4 @@ double norme(double vecteur[], int numberLine);
 void diffVec(double vecteur[], double vecteur2[], double Result[], int numberLine);
 void pageRank(int fVector[] , double vecXP[], double vecteur[], float alpha, int numberLine, double result[]);
 void vectGenerator(double vecteur[], int numberLine);
+void suppSommet(struct noeud *liste[], int* numberLine);

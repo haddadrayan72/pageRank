@@ -62,7 +62,7 @@ int main()
     // affichage
     printf("\naffichage de la structure de matrice\n");
     affichage(liste, numberLine);
-    suppSommet(liste, &numberLine);
+    //suppSommet(liste, &numberLine);
      printf("\naffichage de la structure de matrice après suppression\n");
     affichage(liste, numberLine);
     printf("\n");
